@@ -13,7 +13,7 @@ ENV NGINX_VERSION=1.6.3
 LABEL io.k8s.description="Nginx Webserver" \
     io.k8s.display-name="Nginx 1.6.3" \
     io.openshift.expose-services="8080:http" \
-    io.openshift.tags="builder,webserver,html,nginx" \
+    io.openshift.tags="webserver,html,nginx" \
     # this label tells s2i where to find its mandatory scripts
     # (run, assemble, save-artifacts)
     io.openshift.s2i.scripts-url="image:///usr/libexec/s2i"
@@ -33,4 +33,4 @@ COPY  ["run", "assemble", "save-artifacts", "usage", "/usr/libexec/s2i/"]
 
 # Modify the usage script in your application dir to inform the user how to run
 # this image.
-CMD ["/usr/libexec/s2i/usage"]
+CMD ["/usr/libexec/s2i/run"]
