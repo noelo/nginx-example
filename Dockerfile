@@ -27,7 +27,7 @@ RUN yum install -y epel-release  && \
 # We will change the default port for nginx (It's required if you plan on
 # running images as non-root user).
 RUN sed -i 's/80/8080/' /etc/nginx/nginx.conf
-
+RUN mkdir /var/lib/nginx/tmp/client_body
 # Copy the S2I scripts to /usr/libexec/s2i since we set the label that way
 COPY  ["run", "assemble", "save-artifacts", "usage", "/usr/libexec/s2i/"]
 
